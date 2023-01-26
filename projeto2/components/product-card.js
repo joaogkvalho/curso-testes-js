@@ -1,13 +1,15 @@
 export default function ProductCard({ product, addToCart }) {
   return (
     <section>
-      <div className="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
+      <div
+        data-testid="product-card"
+        className="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden"
+      >
         <div
           data-testid="image"
           className="flex items-end justify-end h-56 w-full bg-cover"
           style={{
-            backgroundImage:
-              'url(https://images.unsplash.com/photo-1495856458515-0637185db551?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80)',
+            backgroundImage: `url(${product.image})`,
           }}
         >
           <button
@@ -28,8 +30,8 @@ export default function ProductCard({ product, addToCart }) {
           </button>
         </div>
         <div className="px-5 py-3">
-          <h3 className="text-gray-700 uppercase">Classic Watch</h3>
-          <span className="text-gray-500 mt-2">$123</span>
+          <h3 className="text-gray-700 uppercase">{product.title}</h3>
+          <span className="text-gray-500 mt-2">${product.price}</span>
         </div>
       </div>
     </section>
