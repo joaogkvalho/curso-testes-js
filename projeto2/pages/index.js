@@ -3,9 +3,11 @@ import { useFetchProducts } from '../hooks/use-fetch-products';
 
 import ProductCard from '../components/product-card';
 import Search from '../components/search';
+import { useCartStore } from '../store/cart';
 
 export default function Home() {
   const { products, error } = useFetchProducts();
+  const addToCart = useCartStore((store) => store.actions.add);
 
   const [term, setTerm] = useState('');
   const [localProducts, setLocalProducts] = useState([]);
@@ -27,7 +29,7 @@ export default function Home() {
       return <h4 data-testid="no-products">No products</h4>;
     } else {
       return localProducts.map((product) => (
-        <ProductCard product={product} key={product.id} />
+        <ProductCard product={product} key={product.id} addToCart={addToCart} />
       ));
     }
   };

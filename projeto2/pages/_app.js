@@ -2,12 +2,15 @@
 import '../styles/globals.css';
 
 import Cart from '../components/cart';
+import { useCartStore } from '../store/cart';
 
 if (process.env.NODE_ENV === 'development') {
   require('../miragejs/server').makeServer();
 }
 
 function MyApp({ Component, pageProps }) {
+  const toggle = useCartStore((store) => store.actions.toggle);
+
   return (
     <div className="bg-white">
       <header>
